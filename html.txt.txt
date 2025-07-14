@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fraud Number Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Payment Number Check</h2>
+
+    <input type="text" id="numberInput" placeholder="Enter payment number">
+
+    <button onclick="checkNumber()">Check</button>
+
+    <button id="paybtn" onclick="makePayment()" style="display: none;">PAY</button>
+
+    <div id="result" class="message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
