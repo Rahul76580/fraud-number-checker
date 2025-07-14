@@ -1,0 +1,49 @@
+let knownNumbers = ["9876543210", "9998887776", "1234567890"];
+
+function checkNumber() {
+  const inputField = document.getElementById("numberInput");
+  const input = inputField.value.trim();
+  const result = document.getElementById("result");
+  const payBtn = document.getElementById("paybtn");
+
+  // Validate number format (10 digits only)
+  if (!/^\d{10}$/.test(input)) {
+    result.textContent = "❌ Invalid number! Please enter a 10-digit number.";
+    result.className = "message warning";
+    payBtn.style.display = "none";
+    return;
+  }
+
+  // Check if number is in history
+  if (knownNumbers.includes(input)) {
+    result.textContent = "✅ This number already exists in your history.";
+    result.className = "message safe";
+    payBtn.style.display = "block";
+  } else {
+    result.textContent = result.textContent = "⚠️ Be careful! This number is not in your history. It may be fraud.";
+
+    result.className = "message warning";
+    payBtn.style.display = "block";
+  }
+}
+
+function makePayment() {
+  const inputField = document.getElementById("numberInput");
+  const input = inputField.value.trim();
+  const result = document.getElementById("result");
+  const payBtn = document.getElementById("paybtn");
+
+  // Add number to history if not already there
+  if (!knownNumbers.includes(input)) {
+    knownNumbers.push(input);
+  }
+
+  result.textContent = "✅ Payment Successful! Number added to your history.";
+  result.className = "message safe";
+  payBtn.style.display = "none";
+
+  // ✅ Clear the input field
+  inputField.value = "";
+}
+
+
